@@ -15,9 +15,9 @@ Dit is een proces dat per bug al gauw aan aantal uren in beslag kan nemen. Een a
 Om onder andere deze redenen zijn automatische testen ontstaan. Omdat een project verschillende aspecten heeft zijn er ook verschillende soorten tests. Binnen de front-end wereld zijn drie soorten testing het meest voorkomend; unit-, integration en functional (ook wel end-to-end of user-interface) testing. 
 Deze tests kunnen naast elkaar leven. Het is niet de bedoeling dat je een keuze moet maken over welke soort test je gaat schrijven. Iedere soort test heeft zijn eigen rol. Voor de meeste applicaties zal je een unit test moeten schrijven, maar ook functional tests zijn vaak belangrijk, omdat een duidelijk beeld te geven van wat de gebruiker ervaart. De integration test wordt vaak alleen toegepast bij grotere applicaties: 
 
-- ~Unit tests~ testen of individuele componenten werken zoals verwacht. Meestal zijn dit losse kleine componenten of functies in een groter component. Deze tests worden op hetzelfde uitgevoerd als linting; tijdens je development proces. Hierdoor moeten deze tests snel zijn, daarom geen async acties
-- ~Integration tests~ testen of de samenwerkingen van verschillende componenten werken zoals verwacht. Denk hierbij aan het ophalen van data uit een API en dit doorgeven aan een component, maar bijvoorbeeld ook het samenwerken van verschillende classes
-- ~Functional tests~ worden gedaan vanuit het oogpunt van de gebruiker. Ze voeden de user interface met input. Omdat hiermee eigenlijk de gehele applicatie word getest - vanaf hoe de UI er uit ziet en reageert tot de calls die gedaan worden naar de back-end - wordt dit ook wel end-to-end testing genoemd
+- **Unit tests** testen of individuele componenten werken zoals verwacht. Meestal zijn dit losse kleine componenten of functies in een groter component. Deze tests worden op hetzelfde uitgevoerd als linting; tijdens je development proces. Hierdoor moeten deze tests snel zijn, daarom geen async acties
+- **Integration tests** testen of de samenwerkingen van verschillende componenten werken zoals verwacht. Denk hierbij aan het ophalen van data uit een API en dit doorgeven aan een component, maar bijvoorbeeld ook het samenwerken van verschillende classes
+- **Functional tests** worden gedaan vanuit het oogpunt van de gebruiker. Ze voeden de user interface met input. Omdat hiermee eigenlijk de gehele applicatie word getest - vanaf hoe de UI er uit ziet en reageert tot de calls die gedaan worden naar de back-end - wordt dit ook wel end-to-end testing genoemd
 
 Volgens Bart Waardenburg is er ook nog een vierde level van testing; static analysis. Hieronder vallen tools gebruikt voor linting zoals ESLint of JSLint en static type libraries zoals Typescript of Flow. 
 
@@ -36,13 +36,13 @@ describe('calculator', function() {
     })
   })
 })
-``` // Mocha
+```
 
 - **Assertions**: Functies die kijken of de uitkomst is wat je verwachting: 
 ``` javascript
 assert.typeOf(foo, 'string')
 assert.equal(foo, 'bar')
-``` // Chai
+```
 
 - **Spies**: Informatie over functies. Bijvoorbeeld hoe vaak iets wordt aangeroepen:
 ``` javascript
@@ -53,12 +53,12 @@ it('should call method once with the argument 3', () => {
   object.method(3)
   assert(spy.withArgs(3).calledOnce)
 })
-``` // Sinon
+```
 
 - **Stubs**: Vervangt functies om verwachtte uitkomst te simuleren:
 ``` javascript
 sinon.stub(user, 'isValid').returns(true)
-``` // Sinon
+```
 
 - **Mocks**: Nadoen van modules of functies om een bepaalde output te genereren. Sinon kan bijvoorbeeld server faken voor snelle, verwachte output. Een ander voorbeeld hiervan zijn het vervangen van SVG’s. Gezien deze niet erg belangrijk zijn voor tests kunnen ze vervangen worden met een mock, mocht je problemen ondervinden met het inladen.
 
@@ -72,7 +72,7 @@ it('renders correctly', () => {
   const tree = renderer.create(linkInstance).toJSON()
   expect(tree).toMatchSnapshot()
 })
-``` // Jest (Jasmine)
+```
 
 Dit zorgt voor een bug report zoals onderstaand:
 ![](Automated%20front-end%20testing/Automated%20front-end%20testing/4C0A8309-C549-4DDC-A64F-07ADA204960F.png)
@@ -98,7 +98,7 @@ const sum = require('./sum');
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
 });
-``` // Jest
+```
 
 **Mocha**
 - Relatief oud en volwassen framework. Breed en veel gebruikt, grote community
@@ -118,7 +118,7 @@ describe('Array', function() {
     });
   });
 });
-``` // Mocha
+```
 
 > "In short, if you want to “just get started” or looking for a fast framework for large projects, go with Jest. If you want a very flexible and extendable configuration, go with Mocha."  
 
@@ -162,7 +162,7 @@ module.exports = {
 
   'after': (browser) => browser.end(),
 };
-``` // NightwatchJS
+```
 
 Een nadeel van het gebruik van WebDrivers is dat de hoge instapdrempel en configuratie redelijk veel tijd vragen. Dit kan het proces vertragen, maar kan voor grote applicaties wel degelijk waarde bieden. 
 
@@ -319,7 +319,7 @@ Al met al denk ik dat het zeker de moeite waard is om je developers bij te schol
 24. [Google Testing Blog: Just Say No to More End-to-End Tests](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
 25. [GTAC 2016: Presentations  |  Google Test Automation Conference       |  Google Developers](https://developers.google.com/google-test-automation-conference/2016/presentations)
 
-~Other handy - not covered - stuff~
+**Other handy - not covered - stuff**
 - [istanbul-js: A Javascript code coverage tool written in JS](https://gotwarlost.github.io/istanbul/) 
 Testen hoeveel procent van je code gedekt is door unit tests.
 - https://storybook.js.org/
